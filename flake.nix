@@ -17,21 +17,7 @@
                 neovim-nightly-overlay.overlays.default
                 (final: prev:
                     let
-                        plugins = with final.vimPlugins; [
-                            vim-surround
-                            vim-trailing-whitespace
-
-                            # Ui
-                            sonokai
-                            telescope-nvim
-                            plenary-nvim
-                            oil-nvim
-
-                            nvim-treesitter.withAllGrammars
-                            nvim-lspconfig
-                            blink-cmp
-                            fidget-nvim
-                        ];
+                        plugins = import ./plugins.nix { pkgs = final; };
                     in {
                         # Expose the wrapped nightly neovim with this config
                         neovim-flake = final.wrapNeovim final.neovim-unwrapped {
