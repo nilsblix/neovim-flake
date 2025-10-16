@@ -49,6 +49,12 @@
                 # nix run .
                 packages.default = myNeovim;
 
+                devShells.default = pkgs.mkShell {
+                    packages = with pkgs; [
+                        lua-language-server
+                    ];
+                };
+
                 # nix run
                 apps.default = {
                     type = "app";
