@@ -98,7 +98,7 @@ require("fidget").setup({})
 local border_opt = "single"
 
 vim.diagnostic.config({
-    float = { border = border_opt, focusable = true, },
+    float = { border = border_opt, focusable = true },
     virtual_text = true,
     signs = false,
 })
@@ -161,7 +161,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.lsp.buf.references()
         end, opts)
         keymap.set("n", "K", function()
-            vim.lsp.buf.hover({})
+            vim.lsp.buf.hover({ border = border_opt })
         end, opts)
         keymap.set("i", "<C-h>", function()
             vim.lsp.buf.signature_help()
