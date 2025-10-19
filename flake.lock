@@ -116,6 +116,22 @@
         "type": "github"
       }
     },
+    "helix-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733127512,
+        "narHash": "sha256-XU5piaRs9hz+6ArcgzCw9h84r+fBBRd/IsoqDR9vuCs=",
+        "owner": "oneslash",
+        "repo": "helix-nvim",
+        "rev": "ad5271f5a8e9c66e85cbeceba0404c5e267c3dfd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oneslash",
+        "repo": "helix-nvim",
+        "type": "github"
+      }
+    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": [
@@ -202,6 +218,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "helix-nvim": "helix-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs"
       }

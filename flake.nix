@@ -7,9 +7,14 @@
 
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
+        helix-nvim = {
+            url = "github:oneslash/helix-nvim";
+            flake = false;
+        };
     };
 
-    outputs = { self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
+    outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
         let
             # Compose upstream nightly overlay with our own overlay that exposes
             # the configured Neovim as `pkgs.neovim-flake`.
@@ -17,7 +22,7 @@
                 neovim-nightly-overlay.overlays.default
                 (final: prev:
                     let
-                        plugins = import ./plugins.nix { pkgs = final; };
+                        plugins = import ./plugins.nix { inherit inputs; pkgs = final; };
                     in {
                         # Expose the wrapped nightly neovim with this config
                         neovim-flake = final.wrapNeovim final.neovim-unwrapped {
