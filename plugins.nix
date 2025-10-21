@@ -14,6 +14,7 @@ in with pkgs.vimPlugins; [
     plenary-nvim
     oil-nvim
 
+    typst-preview-nvim
     nvim-treesitter.withAllGrammars
     nvim-lspconfig
     blink-cmp
