@@ -9,7 +9,7 @@
         neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
         helix-nvim = {
-            url = "github:oneslash/helix-nvim";
+            url = "github:nilsblix/helix.nvim";
             flake = false;
         };
     };
