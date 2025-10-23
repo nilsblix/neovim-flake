@@ -194,7 +194,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("telescope").setup({
     defaults = {
-        disable_devicons = true,
+        color_devicons = false,
+    },
+    pickers = {
+        find_files = { disable_devicons = true },
+        live_grep = { disable_devicons = true },
+        diagnostics = { disable_devicons = true },
+        buffers = { disable_devicons = true },
+        grep_string = { disable_devicons = true },
+        oldfiles = { disable_devicons = true },
+        lsp_references = { disable_devicons = true },
     },
 })
 local telescope_builtin = require("telescope.builtin")
@@ -205,6 +214,7 @@ keymap.set("n", "<leader>sd", telescope_builtin.diagnostics)
 -- <=============== NvimTree ===============>
 require("oil").setup({
     default_file_explorer = true,
+    columns = {},
     view_options = { show_hidden = true },
 })
 
