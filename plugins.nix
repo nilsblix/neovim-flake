@@ -6,6 +6,7 @@
 in with pkgs.vimPlugins; [
     vim-surround
     vim-trailing-whitespace
+    vim-fugitive
 
     # Ui
     sonokai
