@@ -8,10 +8,11 @@
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-        helix-nvim = {
-            url = "github:nilsblix/helix.nvim";
-            flake = false;
-        };
+        helix-nvim.url = "github:nilsblix/helix.nvim";
+        helix-nvim.flake = false;
+
+        lemons-nvim.url = "github:Kaikacy/Lemons.nvim";
+        lemons-nvim.flake = false;
     };
 
     outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:

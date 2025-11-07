@@ -11,6 +11,7 @@ in with pkgs.vimPlugins; [
     # Ui
     sonokai
     (makeNeovimPlugin inputs.helix-nvim "helix")
+    (makeNeovimPlugin inputs.lemons-nvim "lemons")
     telescope-nvim
     plenary-nvim
     oil-nvim

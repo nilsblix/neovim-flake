@@ -157,6 +157,22 @@
         "type": "github"
       }
     },
+    "lemons-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762415787,
+        "narHash": "sha256-dsWyEEEMm3qyaX5TGmKSmCreZIxTkhKnBl5sObJOb8I=",
+        "owner": "Kaikacy",
+        "repo": "Lemons.nvim",
+        "rev": "56660c27777862df5243f14b8ad8dfedeafedacb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kaikacy",
+        "repo": "Lemons.nvim",
+        "type": "github"
+      }
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -219,6 +235,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "helix-nvim": "helix-nvim",
+        "lemons-nvim": "lemons-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs"
       }
