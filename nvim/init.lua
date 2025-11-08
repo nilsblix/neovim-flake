@@ -64,23 +64,10 @@ end
 
 cmd("colorscheme sonokai")
 vim.cmd("set notermguicolors")
--- vim.cmd("hi NILSBLIX_ORANGE guifg=#FFAF5F")
--- vim.cmd("hi NILSBLIX_RED guifg=#FF5F5F")
--- vim.cmd("hi NILSBLIX_PURPLE guifg=#CF83CE")
--- vim.cmd("hi NILSBLIX_BLUE guifg=#87AFD7")
--- vim.cmd("hi! link Orange NILSBLIX_ORANGE")
--- vim.cmd("hi! link OrangeItalic NILSBLIX_ORANGE")
--- vim.cmd("hi! link OrangeSign NILSBLIX_ORANGE")
--- vim.cmd("hi! link Red NILSBLIX_RED")
--- vim.cmd("hi! link RedItalic NILSBLIX_RED")
--- vim.cmd("hi! link RedSign NILSBLIX_RED")
--- vim.cmd("hi! link Purple NILSBLIX_PURPLE")
--- vim.cmd("hi! link PurpleItalic NILSBLIX_PURPLE")
--- vim.cmd("hi! link PurpleSign NILSBLIX_PURPLE")
--- vim.cmd("hi! link Blue NILSBLIX_BLUE")
--- vim.cmd("hi! link BlueItalic NILSBLIX_BLUE")
--- vim.cmd("hi! link BlueSign NILSBLIX_BLUE")
--- vim.cmd("hi Normal guibg=#202020")
+-- I set these to disable highlights on FIXME, TODO or NOTE
+cmd("hi! Todo ctermbg=none gui=none")
+cmd("hi! @comment.error.comment ctermbg=none")
+cmd("hi! @comment.note.comment ctermbg=none")
 
 -- <=============== Blink ===============>
 local blink = require("blink.cmp")
