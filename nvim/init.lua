@@ -195,11 +195,20 @@ keymap.set("n", "<leader>sf", telescope_builtin.find_files)
 keymap.set("n", "<leader>sg", telescope_builtin.live_grep)
 keymap.set("n", "<leader>sd", telescope_builtin.diagnostics)
 
--- <=============== NvimTree ===============>
+-- <=============== Oil ===============>
 require("oil").setup({
     default_file_explorer = true,
+    delete_to_trash = true,
     columns = {},
     view_options = { show_hidden = true },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "oil",
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  end,
 })
 
 keymap.set("n", "<leader>n", ":Oil<CR>")
