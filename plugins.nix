@@ -15,9 +15,11 @@ in with pkgs.vimPlugins; [
     catppuccin-nvim
     (makeNeovimPlugin inputs.helix-nvim "helix")
     (makeNeovimPlugin inputs.lemons-nvim "lemons")
-    telescope-nvim
-    plenary-nvim
+    # telescope-nvim
+    # plenary-nvim
     oil-nvim
+
+    fzf-lua
 
     nvim-treesitter.withAllGrammars
     nvim-lspconfig

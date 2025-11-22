@@ -69,7 +69,9 @@ cmd("hi! Todo ctermbg=none gui=none")
 cmd("hi! @comment.error.comment ctermbg=none")
 cmd("hi! @comment.note.comment ctermbg=none")
 
--- <=============== Blink ===============>
+-- =============================================================================
+--                                   Blink
+-- =============================================================================
 local blink = require("blink.cmp")
 blink.setup({
     keymap = { preset = "default" },
@@ -87,7 +89,9 @@ blink.setup({
     }
 })
 
--- <=============== Treesitter ===============>
+-- =============================================================================
+--                                 Treesitter
+-- =============================================================================
 require("nvim-treesitter.configs").setup({
     ensure_installed = {},
     sync_install = false,
@@ -96,7 +100,9 @@ require("nvim-treesitter.configs").setup({
     highlight = { enable = true, },
 })
 
--- <=============== Lsp ===============>
+-- =============================================================================
+--                                    Lsp
+-- =============================================================================
 require("fidget").setup({})
 
 local border_opt = "single"
@@ -176,26 +182,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-require("telescope").setup({
-    defaults = {
-        color_devicons = false,
-    },
-    pickers = {
-        find_files = { disable_devicons = true },
-        live_grep = { disable_devicons = true },
-        diagnostics = { disable_devicons = true },
-        buffers = { disable_devicons = true },
-        grep_string = { disable_devicons = true },
-        oldfiles = { disable_devicons = true },
-        lsp_references = { disable_devicons = true },
+-- =============================================================================
+--                                  Fzf-lua
+-- =============================================================================
+require("fzf-lua").setup({
+    defaults = { file_icons = false },
+    keymap = {
+        fzf = {
+            ["ctrl-q"] = "select-all+accept",
+        },
     },
 })
-local telescope_builtin = require("telescope.builtin")
-keymap.set("n", "<leader>sf", telescope_builtin.find_files)
-keymap.set("n", "<leader>sg", telescope_builtin.live_grep)
-keymap.set("n", "<leader>sd", telescope_builtin.diagnostics)
 
--- <=============== Oil ===============>
+keymap.set("n", "<leader>sf", ":FzfLua files<CR>", { silent = true })
+keymap.set("n", "<leader>sg", ":FzfLua live_grep<CR>", { silent = true })
+keymap.set("n", "<leader>sd", ":FzfLua lsp_workspace_diagnostics<CR>", { silent = true })
+
+-- =============================================================================
+--                                    oil
+-- =============================================================================
 require("oil").setup({
     default_file_explorer = true,
     delete_to_trash = true,
