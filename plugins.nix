@@ -10,13 +10,15 @@ in with pkgs.vimPlugins; [
 
     # Ui
     sonokai
+    rose-pine
+    tokyonight-nvim
+    catppuccin-nvim
     (makeNeovimPlugin inputs.helix-nvim "helix")
     (makeNeovimPlugin inputs.lemons-nvim "lemons")
     telescope-nvim
     plenary-nvim
     oil-nvim
 
-    typst-preview-nvim
     nvim-treesitter.withAllGrammars
     nvim-lspconfig
     blink-cmp
