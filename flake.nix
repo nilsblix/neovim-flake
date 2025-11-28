@@ -13,6 +13,12 @@
 
         lemons-nvim.url = "github:Kaikacy/Lemons.nvim";
         lemons-nvim.flake = false;
+
+        cursor-light-nvim.url = "github:vpoltora/cursor-light.nvim";
+        cursor-light-nvim.flake = false;
+
+        codered-nvim.url = "github:sasja-san/codered-nvim";
+        codered-nvim.flake = false;
     };
 
     outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:

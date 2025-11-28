@@ -1,5 +1,37 @@
 {
   "nodes": {
+    "codered-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764098772,
+        "narHash": "sha256-4nKn19EpekmuZg1N1LZsIDwmHyIoQuXQSy074NXOrDM=",
+        "owner": "sasja-san",
+        "repo": "codered-nvim",
+        "rev": "11f2887f3f7b0b1a9abbcde8949bab0dce669efe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sasja-san",
+        "repo": "codered-nvim",
+        "type": "github"
+      }
+    },
+    "cursor-light-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764292069,
+        "narHash": "sha256-k/bC87O0FIbKnTHVU6bSTK3dLkiwN/JdmT2i882PCqM=",
+        "owner": "vpoltora",
+        "repo": "cursor-light.nvim",
+        "rev": "9397cbfc685a9686f66aee212232724981650381",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vpoltora",
+        "repo": "cursor-light.nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -233,6 +265,8 @@
     },
     "root": {
       "inputs": {
+        "codered-nvim": "codered-nvim",
+        "cursor-light-nvim": "cursor-light-nvim",
         "flake-utils": "flake-utils",
         "helix-nvim": "helix-nvim",
         "lemons-nvim": "lemons-nvim",

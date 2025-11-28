@@ -15,12 +15,11 @@ in with pkgs.vimPlugins; [
     catppuccin-nvim
     (makeNeovimPlugin inputs.helix-nvim "helix")
     (makeNeovimPlugin inputs.lemons-nvim "lemons")
-    # telescope-nvim
-    # plenary-nvim
+    (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
+    (makeNeovimPlugin inputs.codered-nvim "codered")
+
     oil-nvim
-
     fzf-lua
-
     nvim-treesitter.withAllGrammars
     nvim-lspconfig
     blink-cmp
