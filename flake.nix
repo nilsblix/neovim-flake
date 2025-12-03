@@ -19,6 +19,9 @@
 
         codered-nvim.url = "github:sasja-san/codered-nvim";
         codered-nvim.flake = false;
+
+        cobalt-nvim.url = "github:wurli/cobalt.nvim";
+        cobalt-nvim.flake = false;
     };
 
     outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
