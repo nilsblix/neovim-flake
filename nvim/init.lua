@@ -62,18 +62,17 @@ function B(bg)
     cmd("hi! LineNr guibg=" .. bg)
 end
 
--- Wow, have I finally hopped off of sonokai?
--- cmd("colorscheme sonokai")
--- vim.cmd("set notermguicolors")
--- -- I set these to disable highlights on FIXME, TODO or NOTE
--- cmd("hi! Todo ctermbg=none gui=none")
--- cmd("hi! @comment.error.comment ctermbg=none")
--- cmd("hi! @comment.note.comment ctermbg=none")
+cmd("colorscheme sonokai")
+vim.cmd("set notermguicolors")
+-- I set these to disable highlights on FIXME, TODO or NOTE
+cmd("hi! Todo ctermbg=none gui=none")
+cmd("hi! @comment.error.comment ctermbg=none")
+cmd("hi! @comment.note.comment ctermbg=none")
 
 -- Some ui-options.
-vim.cmd("colorscheme lemons")
-vim.opt.statuscolumn = "%s %4{v:lnum}  %#LineNrSeparator#│%*  "
-vim.cmd("hi Normal guibg=#262626")
+-- vim.cmd("colorscheme lemons")
+-- vim.opt.statuscolumn = "%s %4{v:lnum}  %#LineNrSeparator#│%*  "
+-- vim.cmd("hi Normal guibg=#262626")
 
 -- =============================================================================
 --                                   Blink
