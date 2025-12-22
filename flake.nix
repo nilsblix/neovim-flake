@@ -17,8 +17,8 @@
         cursor-light-nvim.url = "github:vpoltora/cursor-light.nvim";
         cursor-light-nvim.flake = false;
 
-        codered-nvim.url = "github:sasja-san/codered-nvim";
-        codered-nvim.flake = false;
+        cursor-dark-nvim.url = "github:nilsblix/cursor-dark.nvim";
+        cursor-dark-nvim.flake = false;
 
         cobalt-nvim.url = "github:wurli/cobalt.nvim";
         cobalt-nvim.flake = false;

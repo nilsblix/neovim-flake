@@ -1,6 +1,11 @@
 local cmd = vim.cmd
 local opt = vim.o
 
+require("cursor-dark").setup({
+    disable_italics = true,
+})
+vim.cmd.colorscheme("cursor-dark")
+
 opt.path = opt.path .. '**'
 
 opt.number = true
@@ -62,17 +67,12 @@ function B(bg)
     cmd("hi! LineNr guibg=" .. bg)
 end
 
-cmd("colorscheme sonokai")
-vim.cmd("set notermguicolors")
--- I set these to disable highlights on FIXME, TODO or NOTE
-cmd("hi! Todo ctermbg=none gui=none")
-cmd("hi! @comment.error.comment ctermbg=none")
-cmd("hi! @comment.note.comment ctermbg=none")
-
--- Some ui-options.
--- vim.cmd("colorscheme lemons")
--- vim.opt.statuscolumn = "%s %4{v:lnum}  %#LineNrSeparator#│%*  "
--- vim.cmd("hi Normal guibg=#262626")
+-- cmd("colorscheme sonokai")
+-- vim.cmd("set notermguicolors")
+-- -- I set these to disable highlights on FIXME, TODO or NOTE
+-- cmd("hi! Todo ctermbg=none gui=none")
+-- cmd("hi! @comment.error.comment ctermbg=none")
+-- cmd("hi! @comment.note.comment ctermbg=none")
 
 -- =============================================================================
 --                                   Blink

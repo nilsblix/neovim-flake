@@ -16,7 +16,7 @@ in with pkgs.vimPlugins; [
     (makeNeovimPlugin inputs.helix-nvim "helix")
     (makeNeovimPlugin inputs.lemons-nvim "lemons")
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
-    (makeNeovimPlugin inputs.codered-nvim "codered")
+    (makeNeovimPlugin inputs.cursor-dark-nvim "cursor-dark")
     (makeNeovimPlugin inputs.cobalt-nvim "cobalt")
 
     oil-nvim
