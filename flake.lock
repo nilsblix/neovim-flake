@@ -19,11 +19,11 @@
     "cursor-dark-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1766446803,
-        "narHash": "sha256-nUYhaNsgCtB6Z+IQRH4HzgeV7Dicd+RLZoOwZWwwAIw=",
+        "lastModified": 1767210263,
+        "narHash": "sha256-BVMIA2alUdhzI0EW3vQvYCR1eRBfQbPehlJqjdPJ13I=",
         "owner": "nilsblix",
         "repo": "cursor-dark.nvim",
-        "rev": "3f8fdef25ed8085ad2c9d5fe3e92ad04b9719087",
+        "rev": "8748573a8664bd0b6f62c4c30d83fda8d0dd2f3e",
         "type": "github"
       },
       "original": {

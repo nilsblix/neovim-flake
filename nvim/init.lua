@@ -2,7 +2,7 @@ local cmd = vim.cmd
 local opt = vim.o
 
 require("cursor-dark").setup({
-    disable_italics = true,
+    coloured_operators = true,
 })
 vim.cmd.colorscheme("cursor-dark")
 
@@ -34,6 +34,7 @@ keymap.set("n", "<leader>ya", "mzggyG`z")
 keymap.set("n", "<C-c>", ":cnext<CR>")
 keymap.set("n", "<C-k>", ":cprev<CR>")
 keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
+keymap.set("n", "<leader>i", ":Inspect<CR>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
@@ -128,6 +129,7 @@ local servers = {
     "nixd",
     "yamlls",
     "basedpyright",
+    "gopls",
     "ocamllsp",
 }
 
