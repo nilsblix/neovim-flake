@@ -13,6 +13,7 @@ in with pkgs.vimPlugins; [
     rose-pine
     tokyonight-nvim
     catppuccin-nvim
+    vscode-nvim
     (makeNeovimPlugin inputs.helix-nvim "helix")
     (makeNeovimPlugin inputs.lemons-nvim "lemons")
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
