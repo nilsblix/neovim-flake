@@ -1,17 +1,9 @@
-local cmd = vim.cmd
 local opt = vim.o
-
-require("cursor-dark").setup({
-    coloured_operators = true,
-})
-vim.cmd.colorscheme("cursor-dark")
-
-opt.path = opt.path .. '**'
+local keymap = vim.keymap
 
 opt.number = true
 opt.incsearch = true
 opt.hlsearch = true
-opt.guicursor = "n-v-i-c:block-Cursor"
 
 opt.title = true
 opt.expandtab = true
@@ -26,9 +18,9 @@ opt.swapfile = false
 vim.g.mapleader = " "
 
 opt.mouse = "a"
-cmd("set clipboard+=unnamed")
+opt.clipboard = opt.clipboard .. "unnamed"
+-- vim.cmd("set clipboard+=unnamed")
 
-local keymap = vim.keymap
 keymap.set("n", "<leader>p", "<C-^>")
 keymap.set("n", "<leader>ya", "mzggyG`z")
 keymap.set("n", "<C-c>", ":cnext<CR>")
@@ -36,44 +28,39 @@ keymap.set("n", "<C-k>", ":cprev<CR>")
 keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
 keymap.set("n", "<leader>i", ":Inspect<CR>")
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "ocaml", "ocamlinterface", "ocamllex", "ocamlyacc" },
+    callback = function()
+        vim.bo.tabstop = 2
+        vim.bo.softtabstop = 2
+        vim.bo.shiftwidth = 2
+    end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
     end,
 })
 
--- Remove italics
-local grpid = vim.api.nvim_create_augroup('custom_highlights', {})
-vim.api.nvim_create_autocmd('ColorScheme', {
-    group = grpid,
-    pattern = "*",
-    callback = function(_)
-        cmd("hi! Cursorline guibg=NONE")
-        for _, name in ipairs(vim.fn.getcompletion("", "highlight")) do
-            local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name })
-            if ok and hl then
-                if hl.italic or hl.underline or hl.undercurl or hl.underdouble or hl.underdotted or hl.underdashed then
-                    hl.italic = false
-                    vim.api.nvim_set_hl(0, name, hl)
-                end
-            end
-        end
-        vim.cmd("hi! clear Cursor")
-    end,
+-- I'm not sure I love this. Maybe I will try this in the future. It seems cool,
+-- and I do like the look of vim.o.cmdheight = 0.
+opt.cmdheight = 0
+require('vim._extui').enable({
+    enable = true, -- Whether to enable or disable the UI.
+    msg = { -- Options related to the message module.
+        ---@type 'cmd'|'msg' Where to place regular messages, either in the
+        ---cmdline or in a separate ephemeral message window.
+        target = 'msg',
+        timeout = 2000, -- Time a message is visible in the message window.
+    },
 })
 
-function B(bg)
-    cmd("hi! Normal guibg=" .. bg)
-    cmd("hi! EndOfBuffer guibg=" .. bg)
-    cmd("hi! LineNr guibg=" .. bg)
-end
-
--- cmd("colorscheme sonokai")
--- vim.cmd("set notermguicolors")
--- -- I set these to disable highlights on FIXME, TODO or NOTE
--- cmd("hi! Todo ctermbg=none gui=none")
--- cmd("hi! @comment.error.comment ctermbg=none")
--- cmd("hi! @comment.note.comment ctermbg=none")
+require("cursor-dark").setup({
+    coloured_operators = true,
+})
+vim.cmd.colorscheme("cursor-dark")
+opt.guicursor = "n-v-i-c:block-Cursor"
 
 -- =============================================================================
 --                                   Blink
@@ -174,6 +161,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         keymap.set("n", "gd", function()
             vim.lsp.buf.definition()
         end, opts)
+        keymap.set("n", "gt", function()
+            vim.lsp.buf.type_definition()
+        end, opts)
         keymap.set("n", "K", function()
             vim.lsp.buf.hover({ border = border_opt })
         end, opts)
@@ -206,7 +196,7 @@ keymap.set("n", "<leader>sg", ":FzfLua live_grep<CR>", { silent = true })
 keymap.set("n", "<leader>sd", ":FzfLua lsp_workspace_diagnostics<CR>", { silent = true })
 
 -- =============================================================================
---                                    oil
+--                                    Oil
 -- =============================================================================
 require("oil").setup({
     default_file_explorer = true,
@@ -223,4 +213,4 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-keymap.set("n", "<leader>n", ":Oil<CR>")
+keymap.set("n", "<leader>n", ":Oil<CR>", { silent = true })
