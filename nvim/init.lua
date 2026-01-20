@@ -19,7 +19,6 @@ vim.g.mapleader = " "
 
 opt.mouse = "a"
 opt.clipboard = opt.clipboard .. "unnamed"
--- vim.cmd("set clipboard+=unnamed")
 
 keymap.set("n", "<leader>p", "<C-^>")
 keymap.set("n", "<leader>ya", "mzggyG`z")
@@ -57,11 +56,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --     },
 -- })
 
-require("cursor-dark").setup({
+-- require("cursor-dark").setup({
+--     coloured_operators = true,
+-- })
+-- vim.cmd.colorscheme("cursor-dark")
+opt.guicursor = "n-v-i-c:block-Cursor"
+require("zee").setup({
     coloured_operators = true,
 })
-vim.cmd.colorscheme("cursor-dark")
-opt.guicursor = "n-v-i-c:block-Cursor"
+vim.cmd.colorscheme("zee")
 
 -- =============================================================================
 --                                   Blink

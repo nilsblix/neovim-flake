@@ -182,7 +182,8 @@
         "helix-nvim": "helix-nvim",
         "lemons-nvim": "lemons-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "zee-nvim": "zee-nvim"
       }
     },
     "systems": {
@@ -197,6 +198,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "zee-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768913188,
+        "narHash": "sha256-FMoFFMYSv21XaNUXYnIqDqRnf9lGVnHo5TS75VcAu4s=",
+        "owner": "nilsblix",
+        "repo": "zee.nvim",
+        "rev": "bcfa9ceb128a6a51cca882103f11d8720527cdc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nilsblix",
+        "repo": "zee.nvim",
         "type": "github"
       }
     }
