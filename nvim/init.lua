@@ -63,6 +63,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 opt.guicursor = "n-v-i-c:block-Cursor"
 require("zee").setup({
     coloured_operators = true,
+    coloured_properties = true,
 })
 vim.cmd.colorscheme("zee")
 
