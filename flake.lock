@@ -183,7 +183,7 @@
         "lemons-nvim": "lemons-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
-        "zee-nvim": "zee-nvim"
+        "torn-nvim": "torn-nvim"
       }
     },
     "systems": {
@@ -201,19 +201,19 @@
         "type": "github"
       }
     },
-    "zee-nvim": {
+    "torn-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1768917276,
-        "narHash": "sha256-AqEVSy+bZXz1loOgq+H0br0jaeTUjy5SoL5y899hmMg=",
+        "lastModified": 1769036994,
+        "narHash": "sha256-CerMHXVIUoE+pRcJpbCbzaf8Qcz0XUtP+ep7TZW2Qns=",
         "owner": "nilsblix",
-        "repo": "zee.nvim",
-        "rev": "ccd43a34e799f96c7c168c7c591c05191295ea7e",
+        "repo": "torn.nvim",
+        "rev": "2615a020f6078b527b14552a182dff1e007553f5",
         "type": "github"
       },
       "original": {
         "owner": "nilsblix",
-        "repo": "zee.nvim",
+        "repo": "torn.nvim",
         "type": "github"
       }
     }

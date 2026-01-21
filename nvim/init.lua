@@ -36,6 +36,16 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+vim.api.nvim_create_autocmd("BufRead", {
+    pattern = "*.nils",
+    callback = function()
+        vim.bo.filetype = "python"
+        vim.bo.tabstop = 2
+        vim.bo.softtabstop = 2
+        vim.bo.shiftwidth = 2
+    end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
@@ -61,11 +71,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- })
 -- vim.cmd.colorscheme("cursor-dark")
 opt.guicursor = "n-v-i-c:block-Cursor"
-require("zee").setup({
-    coloured_operators = true,
-    coloured_properties = true,
-})
-vim.cmd.colorscheme("zee")
+vim.cmd.colorscheme("torn")
 
 -- =============================================================================
 --                                   Blink

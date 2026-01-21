@@ -20,8 +20,8 @@
         cursor-dark-nvim.url = "github:nilsblix/cursor-dark.nvim";
         cursor-dark-nvim.flake = false;
 
-        zee-nvim.url = "github:nilsblix/zee.nvim";
-        zee-nvim.flake = false;
+        torn-nvim.url = "github:nilsblix/torn.nvim";
+        torn-nvim.flake = false;
 
         cobalt-nvim.url = "github:wurli/cobalt.nvim";
         cobalt-nvim.flake = false;
