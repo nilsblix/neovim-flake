@@ -204,11 +204,11 @@
     "torn-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1769036994,
-        "narHash": "sha256-CerMHXVIUoE+pRcJpbCbzaf8Qcz0XUtP+ep7TZW2Qns=",
+        "lastModified": 1769038322,
+        "narHash": "sha256-OQMpKCuu/KMbaw6yh1kK9Gmv74lUKInYneWZH+h1eig=",
         "owner": "nilsblix",
         "repo": "torn.nvim",
-        "rev": "2615a020f6078b527b14552a182dff1e007553f5",
+        "rev": "73f0cff099e7e07b174bdaafda541e3b2a7b71ce",
         "type": "github"
       },
       "original": {
