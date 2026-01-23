@@ -21,7 +21,7 @@ opt.mouse = "a"
 opt.clipboard = opt.clipboard .. "unnamed"
 opt.guicursor = "n-v-i-c:block-Cursor"
 
-vim.highlight.priorities.semantic_tokens = 105
+vim.highlight.priorities.semantic_tokens = 120
 
 keymap.set("n", "<leader>p", "<C-^>")
 keymap.set("n", "<leader>ya", "mzggyG`z")
@@ -54,7 +54,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank()
     end,
 })
-
 vim.cmd.colorscheme("carrot")
 
 -- I'm not sure I love this. Maybe I will try this in the future. It seems cool,
