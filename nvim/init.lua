@@ -19,6 +19,9 @@ vim.g.mapleader = " "
 
 opt.mouse = "a"
 opt.clipboard = opt.clipboard .. "unnamed"
+opt.guicursor = "n-v-i-c:block-Cursor"
+
+vim.highlight.priorities.semantic_tokens = 105
 
 keymap.set("n", "<leader>p", "<C-^>")
 keymap.set("n", "<leader>ya", "mzggyG`z")
@@ -52,6 +55,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+vim.cmd.colorscheme("carrot")
+
 -- I'm not sure I love this. Maybe I will try this in the future. It seems cool,
 -- and I do like the look of vim.o.cmdheight = 0.
 --
@@ -65,13 +70,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --         timeout = 2000, -- Time a message is visible in the message window.
 --     },
 -- })
-
--- require("cursor-dark").setup({
---     coloured_operators = true,
--- })
--- vim.cmd.colorscheme("cursor-dark")
-opt.guicursor = "n-v-i-c:block-Cursor"
-vim.cmd.colorscheme("torn")
 
 -- =============================================================================
 --                                   Blink

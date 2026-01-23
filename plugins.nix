@@ -14,12 +14,11 @@ in with pkgs.vimPlugins; [
     tokyonight-nvim
     catppuccin-nvim
     vscode-nvim
+    vague-nvim
     (makeNeovimPlugin inputs.helix-nvim "helix")
-    (makeNeovimPlugin inputs.lemons-nvim "lemons")
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
     (makeNeovimPlugin inputs.cursor-dark-nvim "cursor-dark")
-    (makeNeovimPlugin inputs.torn-nvim "torn")
-    (makeNeovimPlugin inputs.cobalt-nvim "cobalt")
+    (makeNeovimPlugin inputs.carrot-nvim "carrot")
 
     oil-nvim
     fzf-lua

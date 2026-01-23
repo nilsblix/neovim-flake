@@ -1,18 +1,18 @@
 {
   "nodes": {
-    "cobalt-nvim": {
+    "carrot-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1760450928,
-        "narHash": "sha256-TRydx6iym08THodT0jVOyQ2JR24DwWFscnL5XGgmlX8=",
-        "owner": "wurli",
-        "repo": "cobalt.nvim",
-        "rev": "9a5e401a686cfb7ad08acae8c4430ac28138d023",
+        "lastModified": 1769189176,
+        "narHash": "sha256-S/H5QniNnS1nwGN03Qml6okcNtYaO9/945ypxNZWKkc=",
+        "owner": "nilsblix",
+        "repo": "carrot.nvim",
+        "rev": "1944d8075b86064bad938fa799319fd50a5dc294",
         "type": "github"
       },
       "original": {
-        "owner": "wurli",
-        "repo": "cobalt.nvim",
+        "owner": "nilsblix",
+        "repo": "carrot.nvim",
         "type": "github"
       }
     },
@@ -103,22 +103,6 @@
         "type": "github"
       }
     },
-    "lemons-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762415787,
-        "narHash": "sha256-dsWyEEEMm3qyaX5TGmKSmCreZIxTkhKnBl5sObJOb8I=",
-        "owner": "Kaikacy",
-        "repo": "Lemons.nvim",
-        "rev": "56660c27777862df5243f14b8ad8dfedeafedacb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Kaikacy",
-        "repo": "Lemons.nvim",
-        "type": "github"
-      }
-    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -175,15 +159,13 @@
     },
     "root": {
       "inputs": {
-        "cobalt-nvim": "cobalt-nvim",
+        "carrot-nvim": "carrot-nvim",
         "cursor-dark-nvim": "cursor-dark-nvim",
         "cursor-light-nvim": "cursor-light-nvim",
         "flake-utils": "flake-utils",
         "helix-nvim": "helix-nvim",
-        "lemons-nvim": "lemons-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs",
-        "torn-nvim": "torn-nvim"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
@@ -198,22 +180,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "torn-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1769038322,
-        "narHash": "sha256-OQMpKCuu/KMbaw6yh1kK9Gmv74lUKInYneWZH+h1eig=",
-        "owner": "nilsblix",
-        "repo": "torn.nvim",
-        "rev": "73f0cff099e7e07b174bdaafda541e3b2a7b71ce",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nilsblix",
-        "repo": "torn.nvim",
         "type": "github"
       }
     }

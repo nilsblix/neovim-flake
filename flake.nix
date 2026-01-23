@@ -11,20 +11,14 @@
         helix-nvim.url = "github:nilsblix/helix.nvim";
         helix-nvim.flake = false;
 
-        lemons-nvim.url = "github:Kaikacy/Lemons.nvim";
-        lemons-nvim.flake = false;
-
         cursor-light-nvim.url = "github:vpoltora/cursor-light.nvim";
         cursor-light-nvim.flake = false;
 
         cursor-dark-nvim.url = "github:nilsblix/cursor-dark.nvim";
         cursor-dark-nvim.flake = false;
 
-        torn-nvim.url = "github:nilsblix/torn.nvim";
-        torn-nvim.flake = false;
-
-        cobalt-nvim.url = "github:wurli/cobalt.nvim";
-        cobalt-nvim.flake = false;
+        carrot-nvim.url = "github:nilsblix/carrot.nvim";
+        carrot-nvim.flake = false;
     };
 
     outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
