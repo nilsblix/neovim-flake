@@ -3,11 +3,11 @@
     "carrot-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1769208940,
-        "narHash": "sha256-lby512zgxw8aq5ptxVudSJ8Q9N/27WjND/HXOdUcvUQ=",
+        "lastModified": 1769258495,
+        "narHash": "sha256-dfIuOcTurAM6Oh4Rf4QZu4svQaUDadqr1dcBlx8mfBo=",
         "owner": "nilsblix",
         "repo": "carrot.nvim",
-        "rev": "20739ed9d4df1c464568cc3183267421bf481d97",
+        "rev": "c804ea8e6bd0fe620c70456ed07ea109674d2f07",
         "type": "github"
       },
       "original": {
