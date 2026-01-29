@@ -23,28 +23,40 @@
 
     outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
         let
+            makeConfiguredNeovim = { pkgs, pluginsPath, configPath }:
+                let
+                    plugins = import pluginsPath { inherit inputs; pkgs = pkgs; };
+                in
+                    pkgs.wrapNeovim pkgs.neovim-unwrapped {
+                        withNodeJs = false;
+                        withRuby = false;
+                        withPython3 = true;
+                        configure = {
+                            packages.myVimPackage = {
+                                start = plugins;
+                                opt = [ ];
+                            };
+                            customRC = "lua << EOF\n" + builtins.readFile configPath + "\nEOF";
+                        };
+                    };
+
             # Compose upstream nightly overlay with our own overlay that exposes
-            # the configured Neovim as `pkgs.neovim-flake`.
+            # the configured Neovim packages.
             overlay = nixpkgs.lib.composeManyExtensions [
                 neovim-nightly-overlay.overlays.default
-                (final: prev:
-                    let
-                        plugins = import ./plugins.nix { inherit inputs; pkgs = final; };
-                    in {
-                        # Expose the wrapped nightly neovim with this config
-                        neovim-flake = final.wrapNeovim final.neovim-unwrapped {
-                            withNodeJs = false;
-                            withRuby = false;
-                            withPython3 = true;
-                            configure = {
-                                packages.myVimPackage = {
-                                    start = plugins;
-                                    opt = [ ];
-                                };
-                                customRC = "lua << EOF\n" + builtins.readFile ./nvim/init.lua + "\nEOF";
-                            };
-                        };
-                    })
+                (final: prev: {
+                    neovim-flake-minimal = makeConfiguredNeovim {
+                        pkgs = final;
+                        pluginsPath = ./minimal/plugins.nix;
+                        configPath = ./minimal/init.lua;
+                    };
+                    neovim-flake-maximal = makeConfiguredNeovim {
+                        pkgs = final;
+                        pluginsPath = ./maximal/plugins.nix;
+                        configPath = ./maximal/init.lua;
+                    };
+                    neovim-flake = final.neovim-flake-maximal;
+                })
             ];
         in
             {
@@ -57,7 +69,8 @@
                     inherit system;
                     overlays = [ self.overlays.default ];
                 };
-                myNeovim = pkgs.neovim-flake;
+                minimalNeovim = pkgs.neovim-flake-minimal;
+                maximalNeovim = pkgs.neovim-flake-maximal;
             in {
                 devShells.default = pkgs.mkShell {
                     packages = with pkgs; [
@@ -65,16 +78,36 @@
                     ];
                 };
 
-                # nix run .
-                packages.default = myNeovim;
+                packages = {
+                    minimal = minimalNeovim;
+                    maximal = maximalNeovim;
+                    default = minimalNeovim;
+                };
 
-                # nix run
-                apps.default = {
-                    type = "app";
-                    program = "${myNeovim}/bin/nvim";
-                    meta = {
-                        description = "Neovim Nightly with a small educational config";
-                        mainProgram = "nvim";
+                apps = {
+                    minimal = {
+                        type = "app";
+                        program = "${minimalNeovim}/bin/nvim";
+                        meta = {
+                            description = "Neovim Nightly with a minimal config";
+                            mainProgram = "nvim";
+                        };
+                    };
+                    maximal = {
+                        type = "app";
+                        program = "${maximalNeovim}/bin/nvim";
+                        meta = {
+                            description = "Neovim Nightly with a maximal config";
+                            mainProgram = "nvim";
+                        };
+                    };
+                    default = {
+                        type = "app";
+                        program = "${minimalNeovim}/bin/nvim";
+                        meta = {
+                            description = "Neovim Nightly with a minimal config";
+                            mainProgram = "nvim";
+                        };
                     };
                 };
             });
