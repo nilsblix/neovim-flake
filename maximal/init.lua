@@ -71,6 +71,25 @@ vim.cmd.colorscheme("carrot")
 -- })
 
 -- =============================================================================
+--                           nvim-highlight-colors
+-- =============================================================================
+vim.api.nvim_create_autocmd("BufReadPre", {
+    callback = function()
+        require("nvim-highlight-colors").setup({
+            render = "background",
+            enable_hex = true,
+            enable_short_hex = true,
+            enable_rgb = true,
+            enable_hsl = true,
+            enable_hsl_without_function = true,
+            enable_ansi = true,
+            enable_var_usage = true,
+            enable_tailwind = true,
+        })
+    end,
+})
+
+-- =============================================================================
 --                                   Blink
 -- =============================================================================
 local blink = require("blink.cmp")
@@ -157,9 +176,7 @@ for _, server in ipairs(servers) do
             capabilities = capabilities,
         }
     end
-end
 
-for _, server in ipairs(servers) do
     vim.lsp.enable(server)
 end
 

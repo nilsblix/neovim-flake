@@ -4,17 +4,12 @@
         version = src.lastModifiedDate;
     };
 in with pkgs.vimPlugins; [
-    vim-surround
     vim-trailing-whitespace
     vim-fugitive
 
-    # Ui
-    sonokai
-    rose-pine
-    tokyonight-nvim
-    catppuccin-nvim
+    nvim-highlight-colors
+
     vscode-nvim
-    vague-nvim
     (makeNeovimPlugin inputs.helix-nvim "helix")
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
     (makeNeovimPlugin inputs.cursor-dark-nvim "cursor-dark")
@@ -22,6 +17,7 @@ in with pkgs.vimPlugins; [
 
     oil-nvim
     fzf-lua
+    nvim-treesitter
     nvim-treesitter.withAllGrammars
     nvim-lspconfig
     blink-cmp
