@@ -6,6 +6,7 @@
 in with pkgs.vimPlugins; [
     vim-trailing-whitespace
     vim-fugitive
+    tabular
 
     nvim-highlight-colors
 
