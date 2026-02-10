@@ -15,6 +15,7 @@ in with pkgs.vimPlugins; [
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
     (makeNeovimPlugin inputs.cursor-dark-nvim "cursor-dark")
     (makeNeovimPlugin inputs.carrot-nvim "carrot")
+    (makeNeovimPlugin inputs.fleet-nvim "fleet")
 
     oil-nvim
     fzf-lua

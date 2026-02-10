@@ -87,6 +87,22 @@
         "type": "github"
       }
     },
+    "fleet-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747532803,
+        "narHash": "sha256-vlAjzRfixL5IwkpuevsgMFn9HckCa4zxeIeJp7JPwmQ=",
+        "owner": "felipeagc",
+        "repo": "fleet-theme-nvim",
+        "rev": "45c300c31485def326db00d9c857760d50e5c728",
+        "type": "github"
+      },
+      "original": {
+        "owner": "felipeagc",
+        "repo": "fleet-theme-nvim",
+        "type": "github"
+      }
+    },
     "helix-nvim": {
       "flake": false,
       "locked": {
@@ -163,6 +179,7 @@
         "cursor-dark-nvim": "cursor-dark-nvim",
         "cursor-light-nvim": "cursor-light-nvim",
         "flake-utils": "flake-utils",
+        "fleet-nvim": "fleet-nvim",
         "helix-nvim": "helix-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs"
