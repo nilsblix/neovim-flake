@@ -13,6 +13,9 @@
 
         carrot-nvim.url = "github:nilsblix/carrot.nvim";
         carrot-nvim.flake = false;
+
+        jb-nvim.url = "github:nickkadutskyi/jb.nvim";
+        jb-nvim.flake = false;
     };
 
     outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
