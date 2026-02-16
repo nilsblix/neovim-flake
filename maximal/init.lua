@@ -54,6 +54,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank()
     end,
 })
+
+require("carrot").setup({
+    ui = true,
+})
+
 vim.cmd.colorscheme("carrot")
 
 -- I'm not sure I love this. Maybe I will try this in the future. It seems cool,
