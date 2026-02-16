@@ -11,11 +11,9 @@ in with pkgs.vimPlugins; [
     nvim-highlight-colors
 
     vscode-nvim
-    (makeNeovimPlugin inputs.helix-nvim "helix")
+    evergarden-nvim
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
-    (makeNeovimPlugin inputs.cursor-dark-nvim "cursor-dark")
     (makeNeovimPlugin inputs.carrot-nvim "carrot")
-    (makeNeovimPlugin inputs.fleet-nvim "fleet")
 
     oil-nvim
     fzf-lua

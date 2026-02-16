@@ -16,22 +16,6 @@
         "type": "github"
       }
     },
-    "cursor-dark-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767211624,
-        "narHash": "sha256-Kh7W9Yxoejt1eIsBJQWnztqrrSrCqH3MAXneSrYjTPQ=",
-        "owner": "nilsblix",
-        "repo": "cursor-dark.nvim",
-        "rev": "df72b87f397489efe5978145e1347dad71d3a016",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nilsblix",
-        "repo": "cursor-dark.nvim",
-        "type": "github"
-      }
-    },
     "cursor-light-nvim": {
       "flake": false,
       "locked": {
@@ -56,11 +40,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765835352,
-        "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
+        "lastModified": 1769996383,
+        "narHash": "sha256-AnYjnFWgS49RlqX7LrC4uA+sCCDBj0Ry/WOJ5XWAsa0=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "a34fae9c08a15ad73f295041fec82323541400a9",
+        "rev": "57928607ea566b5db3ad13af0e57e921e6b12381",
         "type": "github"
       },
       "original": {
@@ -87,38 +71,6 @@
         "type": "github"
       }
     },
-    "fleet-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1747532803,
-        "narHash": "sha256-vlAjzRfixL5IwkpuevsgMFn9HckCa4zxeIeJp7JPwmQ=",
-        "owner": "felipeagc",
-        "repo": "fleet-theme-nvim",
-        "rev": "45c300c31485def326db00d9c857760d50e5c728",
-        "type": "github"
-      },
-      "original": {
-        "owner": "felipeagc",
-        "repo": "fleet-theme-nvim",
-        "type": "github"
-      }
-    },
-    "helix-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1761071675,
-        "narHash": "sha256-D+5z862J8r7ALPiW9NfOOFo/hzsd8uDpz6bpqW0kzss=",
-        "owner": "nilsblix",
-        "repo": "helix.nvim",
-        "rev": "af9869e26c5fefb68227bd674f1213f6c76df5d7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nilsblix",
-        "repo": "helix.nvim",
-        "type": "github"
-      }
-    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -128,11 +80,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766966701,
-        "narHash": "sha256-3AGsMM+RuiIBcnB0I02YyZ5AMMBPYPsNZYU48Yjyntk=",
+        "lastModified": 1771200309,
+        "narHash": "sha256-2UQHZ8BsRSwtzl2R1OqtYR80SQF+HG3kJdTxfiDZR9s=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "c2a582cef5ccd506e2fae438c7506238d38ced30",
+        "rev": "c3e52f66f877cddce4167041546524abb76c0a70",
         "type": "github"
       },
       "original": {
@@ -144,11 +96,11 @@
     "neovim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1766966205,
-        "narHash": "sha256-0QP+beaZydoVTJT8gKVInyKX4yMPWfvS2feY9hulW5E=",
+        "lastModified": 1771195863,
+        "narHash": "sha256-WB0xr61z2nHB3/u42xYilqDCA/x3tvVZ21/bx2pNmgc=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "e916f0327728c78945e6353eeeeb88749b077c0b",
+        "rev": "7d8653575f2a1170f0c7651f271c45a15a185d5e",
         "type": "github"
       },
       "original": {
@@ -159,11 +111,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1763678758,
-        "narHash": "sha256-+hBiJ+kG5IoffUOdlANKFflTT5nO3FrrR2CA3178Y5s=",
+        "lastModified": 1771008912,
+        "narHash": "sha256-gf2AmWVTs8lEq7z/3ZAsgnZDhWIckkb+ZnAo5RzSxJg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "117cc7f94e8072499b0a7aa4c52084fa4e11cc9b",
+        "rev": "a82ccc39b39b621151d6732718e3e250109076fa",
         "type": "github"
       },
       "original": {
@@ -176,11 +128,8 @@
     "root": {
       "inputs": {
         "carrot-nvim": "carrot-nvim",
-        "cursor-dark-nvim": "cursor-dark-nvim",
         "cursor-light-nvim": "cursor-light-nvim",
         "flake-utils": "flake-utils",
-        "fleet-nvim": "fleet-nvim",
-        "helix-nvim": "helix-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs"
       }

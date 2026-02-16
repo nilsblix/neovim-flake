@@ -104,20 +104,12 @@ blink.setup({
         default = { "lsp", "path" },
     },
     fuzzy = { implementation = "rust" },
-    completion = {
-        menu = {
-            draw = {
-                columns = { { "label", "kind", gap = 1 }, { "label_description" } },
-            }
-        },
-        documentation = { auto_show = true },
-    }
 })
 
 -- =============================================================================
 --                                 Treesitter
 -- =============================================================================
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.config").setup({
     ensure_installed = {},
     sync_install = false,
     auto_install = false,

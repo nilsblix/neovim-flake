@@ -8,20 +8,11 @@
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-        helix-nvim.url = "github:nilsblix/helix.nvim";
-        helix-nvim.flake = false;
-
         cursor-light-nvim.url = "github:vpoltora/cursor-light.nvim";
         cursor-light-nvim.flake = false;
 
-        cursor-dark-nvim.url = "github:nilsblix/cursor-dark.nvim";
-        cursor-dark-nvim.flake = false;
-
         carrot-nvim.url = "github:nilsblix/carrot.nvim";
         carrot-nvim.flake = false;
-
-        fleet-nvim.url = "github:felipeagc/fleet-theme-nvim";
-        fleet-nvim.flake = false;
     };
 
     outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
@@ -30,17 +21,12 @@
                 let
                     plugins = import pluginsPath { inherit inputs; pkgs = pkgs; };
                 in
-                    pkgs.wrapNeovim pkgs.neovim-unwrapped {
+                    pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped {
                         withNodeJs = false;
                         withRuby = false;
                         withPython3 = true;
-                        configure = {
-                            packages.myVimPackage = {
-                                start = plugins;
-                                opt = [ ];
-                            };
-                            customRC = "lua << EOF\n" + builtins.readFile configPath + "\nEOF";
-                        };
+                        plugins = plugins;
+                        luaRcContent = builtins.readFile configPath;
                     };
 
             # Compose upstream nightly overlay with our own overlay that exposes
@@ -48,11 +34,6 @@
             overlay = nixpkgs.lib.composeManyExtensions [
                 neovim-nightly-overlay.overlays.default
                 (final: prev: {
-                    neovim-flake-minimal = makeConfiguredNeovim {
-                        pkgs = final;
-                        pluginsPath = ./minimal/plugins.nix;
-                        configPath = ./minimal/init.lua;
-                    };
                     neovim-flake-maximal = makeConfiguredNeovim {
                         pkgs = final;
                         pluginsPath = ./maximal/plugins.nix;
@@ -72,7 +53,6 @@
                     inherit system;
                     overlays = [ self.overlays.default ];
                 };
-                minimalNeovim = pkgs.neovim-flake-minimal;
                 maximalNeovim = pkgs.neovim-flake-maximal;
             in {
                 devShells.default = pkgs.mkShell {
@@ -81,34 +61,14 @@
                     ];
                 };
 
-                packages = {
-                    minimal = minimalNeovim;
-                    maximal = maximalNeovim;
-                    default = minimalNeovim;
-                };
+                packages.default = maximalNeovim;
 
                 apps = {
-                    minimal = {
-                        type = "app";
-                        program = "${minimalNeovim}/bin/nvim";
-                        meta = {
-                            description = "Neovim Nightly with a minimal config";
-                            mainProgram = "nvim";
-                        };
-                    };
-                    maximal = {
+                    default = {
                         type = "app";
                         program = "${maximalNeovim}/bin/nvim";
                         meta = {
-                            description = "Neovim Nightly with a maximal config";
-                            mainProgram = "nvim";
-                        };
-                    };
-                    default = {
-                        type = "app";
-                        program = "${minimalNeovim}/bin/nvim";
-                        meta = {
-                            description = "Neovim Nightly with a minimal config";
+                            description = "Neovim Nightly config";
                             mainProgram = "nvim";
                         };
                     };
