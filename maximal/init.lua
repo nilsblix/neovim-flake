@@ -109,12 +109,14 @@ blink.setup({
 -- =============================================================================
 --                                 Treesitter
 -- =============================================================================
-require("nvim-treesitter.config").setup({
-    ensure_installed = {},
-    sync_install = false,
-    auto_install = false,
-    indent = { enable = true, },
-    highlight = { enable = true, },
+require("nvim-treesitter").setup({
+    install_dir = vim.fn.stdpath("data") .. "/site",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end,
 })
 
 -- =============================================================================
