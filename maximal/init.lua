@@ -60,6 +60,9 @@ require("carrot").setup({
 })
 
 vim.cmd.colorscheme("carrot")
+vim.cmd.colorscheme("xcodehc")
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "black" })
 
 -- I'm not sure I love this. Maybe I will try this in the future. It seems cool,
 -- and I do like the look of vim.o.cmdheight = 0.

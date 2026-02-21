@@ -71,22 +71,6 @@
         "type": "github"
       }
     },
-    "jb-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771231099,
-        "narHash": "sha256-J6kSempe/8rDQvnfE7RZgQN1yAMGIJTVE4GyWSMOABQ=",
-        "owner": "nickkadutskyi",
-        "repo": "jb.nvim",
-        "rev": "a76ba621f8a85c49b14fa7ff703fbd3caea430b1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nickkadutskyi",
-        "repo": "jb.nvim",
-        "type": "github"
-      }
-    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -146,9 +130,9 @@
         "carrot-nvim": "carrot-nvim",
         "cursor-light-nvim": "cursor-light-nvim",
         "flake-utils": "flake-utils",
-        "jb-nvim": "jb-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "xcode-nvim": "xcode-nvim"
       }
     },
     "systems": {
@@ -163,6 +147,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "xcode-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764666906,
+        "narHash": "sha256-Dw3yUFscWvneZbPMCbxRGGjfInhvKgdDB/perlqksUI=",
+        "owner": "lunacookies",
+        "repo": "vim-colors-xcode",
+        "rev": "2329a3ed092b4f72e9361a94567a5431e36e7d9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lunacookies",
+        "repo": "vim-colors-xcode",
         "type": "github"
       }
     }
