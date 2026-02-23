@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "carrot-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771245736,
-        "narHash": "sha256-Pvt5J3vevVe9DpbW0jyljfsJLSm8e7Sth4+KGqtCelA=",
-        "owner": "nilsblix",
-        "repo": "carrot.nvim",
-        "rev": "e2e927783e9d957a4a8fe2fe65f95bffae181f4e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nilsblix",
-        "repo": "carrot.nvim",
-        "type": "github"
-      }
-    },
     "cursor-light-nvim": {
       "flake": false,
       "locked": {
@@ -127,7 +111,6 @@
     },
     "root": {
       "inputs": {
-        "carrot-nvim": "carrot-nvim",
         "cursor-light-nvim": "cursor-light-nvim",
         "flake-utils": "flake-utils",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

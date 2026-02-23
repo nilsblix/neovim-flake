@@ -12,7 +12,6 @@ in with pkgs.vimPlugins; [
 
     vscode-nvim
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
-    (makeNeovimPlugin inputs.carrot-nvim "carrot")
     (makeNeovimPlugin inputs.xcode-nvim "xcode")
 
     oil-nvim

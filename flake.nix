@@ -11,9 +11,6 @@
         cursor-light-nvim.url = "github:vpoltora/cursor-light.nvim";
         cursor-light-nvim.flake = false;
 
-        carrot-nvim.url = "github:nilsblix/carrot.nvim";
-        carrot-nvim.flake = false;
-
         xcode-nvim.url = "github:lunacookies/vim-colors-xcode";
         xcode-nvim.flake = false;
     };
