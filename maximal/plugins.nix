@@ -11,6 +11,7 @@ in with pkgs.vimPlugins; [
     nvim-highlight-colors
 
     vscode-nvim
+    github-nvim-theme
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
     (makeNeovimPlugin inputs.xcode-nvim "xcode")
 

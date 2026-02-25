@@ -20,7 +20,7 @@ vim.g.mapleader = " "
 opt.mouse = "a"
 opt.clipboard = opt.clipboard .. "unnamed"
 opt.guicursor = "n-v-i-c:block-Cursor"
-vim.opt.showtabline = 2
+opt.cmdheight = 0
 
 vim.highlight.priorities.semantic_tokens = 120
 
@@ -56,10 +56,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-vim.cmd.colorscheme("xcodehc")
-local bg = "#121212"
-vim.api.nvim_set_hl(0, "Normal", { bg = bg })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = bg })
+vim.cmd.colorscheme("github_dark_high_contrast")
+-- github_dark_high_contrast has a very light statusline, and with `cmdheight = 0`
+-- the constant flickering becomes unbearable, therefore having them the same colour
+-- helps.
+vim.api.nvim_set_hl(0, "MsgArea", { link = "Statusline" })
 
 -- I'm not sure I love this. Maybe I will try this in the future. It seems cool,
 -- and I do like the look of vim.o.cmdheight = 0.
