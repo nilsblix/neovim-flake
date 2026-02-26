@@ -20,7 +20,6 @@ vim.g.mapleader = " "
 opt.mouse = "a"
 opt.clipboard = opt.clipboard .. "unnamed"
 opt.guicursor = "n-v-i-c:block-Cursor"
-opt.cmdheight = 0
 
 vim.highlight.priorities.semantic_tokens = 120
 
@@ -57,8 +56,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.cmd.colorscheme("github_dark_high_contrast")
+opt.laststatus = 3
 
-opt.cmdheight = 0
 require('vim._core.ui2').enable({
     enable = true, -- Whether to enable or disable the UI.
     msg = {        -- Options related to the message module.
