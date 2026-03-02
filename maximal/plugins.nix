@@ -12,6 +12,7 @@ in with pkgs.vimPlugins; [
 
     vscode-nvim
     github-nvim-theme
+    colibri-vim
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
     (makeNeovimPlugin inputs.xcode-nvim "xcode")
 

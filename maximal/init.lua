@@ -55,7 +55,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-vim.cmd.colorscheme("github_dark_high_contrast")
+-- vim.cmd.colorscheme("github_dark_high_contrast")
+vim.cmd.colorscheme("colibri")
 opt.laststatus = 3
 
 require('vim._core.ui2').enable({
