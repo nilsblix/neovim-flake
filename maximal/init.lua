@@ -64,6 +64,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- vim.cmd.colorscheme("github_dark_high_contrast")
 vim.cmd.colorscheme("colibri")
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#291733" })
 opt.laststatus = 3
 
 require('vim._core.ui2').enable({
