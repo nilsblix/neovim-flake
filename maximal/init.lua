@@ -39,6 +39,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "rust" },
+    callback = function()
+        vim.bo.textwidth = 80
+    end,
+})
+
 vim.api.nvim_create_autocmd("BufRead", {
     pattern = "*.nils",
     callback = function()
