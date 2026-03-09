@@ -1,6 +1,15 @@
 {
     description = "Neovim nightly configuration with Nix";
 
+    nixConfig = {
+        extra-substituters = [
+            "https://nix-community.cachix.org"
+        ];
+        extra-trusted-public-keys = [
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        ];
+    };
+
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
         flake-utils.url = "github:numtide/flake-utils";
@@ -15,13 +24,13 @@
         xcode-nvim.flake = false;
     };
 
-    outputs = inputs@{ self, nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
+    outputs = inputs@{ nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
         let
-            makeConfiguredNeovim = { pkgs, pluginsPath, configPath }:
+            makeConfiguredNeovim = { pkgs, baseNeovim, pluginsPath, configPath }:
                 let
                     plugins = import pluginsPath { inherit inputs; pkgs = pkgs; };
                 in
-                    pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped {
+                    pkgs.wrapNeovimUnstable baseNeovim {
                         withNodeJs = false;
                         withRuby = false;
                         withPython3 = true;
@@ -29,19 +38,19 @@
                         luaRcContent = builtins.readFile configPath;
                     };
 
-            # Compose upstream nightly overlay with our own overlay that exposes
-            # the configured Neovim packages.
-            overlay = nixpkgs.lib.composeManyExtensions [
-                neovim-nightly-overlay.overlays.default
-                (final: prev: {
-                    neovim-flake-maximal = makeConfiguredNeovim {
-                        pkgs = final;
-                        pluginsPath = ./maximal/plugins.nix;
-                        configPath = ./maximal/init.lua;
+            overlay = final: _:
+                let
+                    system = final.stdenv.hostPlatform.system;
+                in
+                    {
+                        neovim-flake-maximal = makeConfiguredNeovim {
+                            pkgs = final;
+                            baseNeovim = neovim-nightly-overlay.packages.${system}.default;
+                            pluginsPath = ./maximal/plugins.nix;
+                            configPath = ./maximal/init.lua;
+                        };
+                        neovim-flake = final.neovim-flake-maximal;
                     };
-                    neovim-flake = final.neovim-flake-maximal;
-                })
-            ];
         in
             {
                 overlays.default = overlay;
@@ -49,11 +58,14 @@
         //
         flake-utils.lib.eachDefaultSystem (system:
             let
-                pkgs = import nixpkgs {
-                    inherit system;
-                    overlays = [ self.overlays.default ];
+                pkgs = import nixpkgs { inherit system; };
+                nightlyNeovim = neovim-nightly-overlay.packages.${system}.default;
+                maximalNeovim = makeConfiguredNeovim {
+                    inherit pkgs;
+                    baseNeovim = nightlyNeovim;
+                    pluginsPath = ./maximal/plugins.nix;
+                    configPath = ./maximal/init.lua;
                 };
-                maximalNeovim = pkgs.neovim-flake-maximal;
             in {
                 devShells.default = pkgs.mkShell {
                     packages = with pkgs; [
@@ -62,6 +74,7 @@
                 };
 
                 packages.default = maximalNeovim;
+                packages.maximal = maximalNeovim;
 
                 apps = {
                     default = {
