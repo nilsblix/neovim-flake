@@ -1,34 +1,32 @@
-local opt = vim.o
-local keymap = vim.keymap
-
-opt.number = true
-opt.incsearch = true
-opt.hlsearch = true
-
-opt.title = true
-opt.expandtab = true
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.scrolloff = 10
-opt.wrap = false
-
-opt.autoread = true
-opt.swapfile = false
 vim.g.mapleader = " "
 
-opt.mouse = "a"
-opt.clipboard = opt.clipboard .. "unnamed"
-opt.guicursor = "n-v-i-c:block-Cursor"
+vim.o.number = true
+vim.o.incsearch = true
+vim.o.hlsearch = true
+
+vim.o.title = true
+vim.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.scrolloff = 10
+vim.o.wrap = false
+
+vim.o.autoread = true
+vim.o.swapfile = false
+
+vim.o.mouse = "a"
+vim.o.clipboard = vim.o.clipboard .. "unnamed"
+vim.o.guicursor = "n-v-i-c:block-Cursor"
 
 vim.highlight.priorities.semantic_tokens = 120
 
-keymap.set("n", "<leader>p", "<C-^>")
-keymap.set("n", "<leader>ya", "mzggyG`z")
-keymap.set("n", "<C-c>", ":cnext<CR>")
-keymap.set("n", "<C-k>", ":cprev<CR>")
-keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
-keymap.set("n", "<leader>i", ":Inspect<CR>")
+vim.keymap.set("n", "<leader>p", "<C-^>")
+vim.keymap.set("n", "<leader>ya", "mzggyG`z")
+vim.keymap.set("n", "<C-c>", ":cnext<CR>")
+vim.keymap.set("n", "<C-k>", ":cprev<CR>")
+vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
+vim.keymap.set("n", "<leader>i", ":Inspect<CR>")
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "ocaml", "ocamlinterface", "ocamllex", "ocamlyacc" },
@@ -63,9 +61,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- vim.cmd.colorscheme("github_dark_high_contrast")
-vim.cmd.colorscheme("colibri")
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "#291733" })
-opt.laststatus = 3
+-- vim.cmd.colorscheme("colibri")
+-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "#291733" })
+vim.cmd.colorscheme("vscode")
+vim.o.laststatus = 3
 
 require('vim._core.ui2').enable({
     enable = true, -- Whether to enable or disable the UI.
@@ -184,22 +183,22 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(e)
         local opts = { buffer = e.buf }
-        keymap.set("n", "gd", function()
+        vim.keymap.set("n", "gd", function()
             vim.lsp.buf.definition()
         end, opts)
-        keymap.set("n", "gt", function()
+        vim.keymap.set("n", "gt", function()
             vim.lsp.buf.type_definition()
         end, opts)
-        keymap.set("n", "K", function()
+        vim.keymap.set("n", "K", function()
             vim.lsp.buf.hover({ border = border_opt })
         end, opts)
-        keymap.set("i", "<C-h>", function()
+        vim.keymap.set("i", "<C-h>", function()
             vim.lsp.buf.signature_help()
         end, opts)
-        keymap.set("n", "<leader>rn", function()
+        vim.keymap.set("n", "<leader>rn", function()
             vim.lsp.buf.rename()
         end, opts)
-        keymap.set("n", "<leader>E", function()
+        vim.keymap.set("n", "<leader>E", function()
             vim.diagnostic.open_float()
         end, opts)
     end,
@@ -217,9 +216,9 @@ require("fzf-lua").setup({
     },
 })
 
-keymap.set("n", "<leader>sf", ":FzfLua files<CR>", { silent = true })
-keymap.set("n", "<leader>sg", ":FzfLua live_grep<CR>", { silent = true })
-keymap.set("n", "<leader>sd", ":FzfLua lsp_workspace_diagnostics<CR>", { silent = true })
+vim.keymap.set("n", "<leader>sf", ":FzfLua files<CR>", { silent = true })
+vim.keymap.set("n", "<leader>sg", ":FzfLua live_grep<CR>", { silent = true })
+vim.keymap.set("n", "<leader>sd", ":FzfLua lsp_workspace_diagnostics<CR>", { silent = true })
 
 -- =============================================================================
 --                                    Oil
@@ -239,4 +238,4 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-keymap.set("n", "<leader>n", ":Oil<CR>", { silent = true })
+vim.keymap.set("n", "<leader>n", ":Oil<CR>", { silent = true })
