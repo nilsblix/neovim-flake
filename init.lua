@@ -141,7 +141,6 @@ local servers = {
     "zls",
     "ts_ls",
     "nixd",
-    "yamlls",
     "basedpyright",
     "gopls",
     "ocamllsp",

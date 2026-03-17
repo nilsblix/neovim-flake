@@ -46,8 +46,8 @@
                         neovim-flake-maximal = makeConfiguredNeovim {
                             pkgs = final;
                             baseNeovim = neovim-nightly-overlay.packages.${system}.default;
-                            pluginsPath = ./maximal/plugins.nix;
-                            configPath = ./maximal/init.lua;
+                            pluginsPath = ./plugins.nix;
+                            configPath = ./init.lua;
                         };
                         neovim-flake = final.neovim-flake-maximal;
                     };
@@ -63,8 +63,8 @@
                 maximalNeovim = makeConfiguredNeovim {
                     inherit pkgs;
                     baseNeovim = nightlyNeovim;
-                    pluginsPath = ./maximal/plugins.nix;
-                    configPath = ./maximal/init.lua;
+                    pluginsPath = ./plugins.nix;
+                    configPath = ./init.lua;
                 };
             in {
                 devShells.default = pkgs.mkShell {
