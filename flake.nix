@@ -22,6 +22,9 @@
 
         xcode-nvim.url = "github:lunacookies/vim-colors-xcode";
         xcode-nvim.flake = false;
+
+        y9nika-nvim.url = "github:y9san9/y9nika.nvim";
+        y9nika-nvim.flake = false;
     };
 
     outputs = inputs@{ nixpkgs, flake-utils, neovim-nightly-overlay, ... }:

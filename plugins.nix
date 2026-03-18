@@ -11,11 +11,11 @@ in with pkgs.vimPlugins; [
     nvim-highlight-colors
 
     vscode-nvim
-    oxocarbon-nvim
-    github-nvim-theme
     colibri-vim
+    falcon
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
     (makeNeovimPlugin inputs.xcode-nvim "xcode")
+    (makeNeovimPlugin inputs.y9nika-nvim "y9nika")
 
     oil-nvim
     fzf-lua

@@ -19,8 +19,6 @@ vim.o.mouse = "a"
 vim.o.clipboard = vim.o.clipboard .. "unnamed"
 vim.o.guicursor = "n-v-i-c:block-Cursor"
 
-vim.highlight.priorities.semantic_tokens = 120
-
 vim.keymap.set("n", "<leader>p", "<C-^>")
 vim.keymap.set("n", "<leader>ya", "mzggyG`z")
 vim.keymap.set("n", "<C-c>", ":cnext<CR>")
@@ -60,11 +58,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- vim.cmd.colorscheme("github_dark_high_contrast")
 -- vim.cmd.colorscheme("colibri")
 -- vim.api.nvim_set_hl(0, "StatusLine", { bg = "#291733" })
-vim.cmd.colorscheme("vscode")
+--
+-- vim.cmd.colorscheme("vscode")
+
 vim.o.laststatus = 3
+vim.highlight.priorities.semantic_tokens = 80
+vim.cmd.colorscheme("y9nika")
 
 require('vim._core.ui2').enable({
     enable = true, -- Whether to enable or disable the UI.
