@@ -12,10 +12,11 @@ in with pkgs.vimPlugins; [
 
     vscode-nvim
     colibri-vim
-    falcon
+    dracula-vim
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
     (makeNeovimPlugin inputs.xcode-nvim "xcode")
     (makeNeovimPlugin inputs.y9nika-nvim "y9nika")
+    (makeNeovimPlugin inputs.koda-nvim "koda")
 
     oil-nvim
     fzf-lua

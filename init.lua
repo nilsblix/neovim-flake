@@ -58,10 +58,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = function()
+        vim.cmd("hi! Cursor guibg=none")
+    end,
+})
+
 -- vim.cmd.colorscheme("colibri")
 -- vim.api.nvim_set_hl(0, "StatusLine", { bg = "#291733" })
---
--- vim.cmd.colorscheme("vscode")
 
 vim.o.laststatus = 3
 vim.highlight.priorities.semantic_tokens = 80
