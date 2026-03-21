@@ -14,9 +14,8 @@ in with pkgs.vimPlugins; [
     colibri-vim
     dracula-vim
     (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
-    (makeNeovimPlugin inputs.xcode-nvim "xcode")
     (makeNeovimPlugin inputs.y9nika-nvim "y9nika")
-    (makeNeovimPlugin inputs.koda-nvim "koda")
+    (makeNeovimPlugin inputs.jellybeans-nvim "jellybeans")
 
     oil-nvim
     fzf-lua

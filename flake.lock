@@ -55,19 +55,19 @@
         "type": "github"
       }
     },
-    "koda-nvim": {
+    "jellybeans-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1772885352,
-        "narHash": "sha256-8tZWCL+XBFIiBeOOOnXG590irPRmhr23J4WhrPkGEzA=",
-        "owner": "oskarnurm",
-        "repo": "koda.nvim",
-        "rev": "a560a332ccc1eb2caacb280a390213bb9f37b3cb",
+        "lastModified": 1774021224,
+        "narHash": "sha256-iQleOjNZKNOdh+9ollhja3gNuwgm5x+/t5zpcSGacvk=",
+        "owner": "WTFox",
+        "repo": "jellybeans.nvim",
+        "rev": "8c7a5a23d01b1188a66bd1eddb809132a138cf6e",
         "type": "github"
       },
       "original": {
-        "owner": "oskarnurm",
-        "repo": "koda.nvim",
+        "owner": "WTFox",
+        "repo": "jellybeans.nvim",
         "type": "github"
       }
     },
@@ -129,7 +129,7 @@
       "inputs": {
         "cursor-light-nvim": "cursor-light-nvim",
         "flake-utils": "flake-utils",
-        "koda-nvim": "koda-nvim",
+        "jellybeans-nvim": "jellybeans-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
         "xcode-nvim": "xcode-nvim",

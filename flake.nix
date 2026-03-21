@@ -26,8 +26,8 @@
         y9nika-nvim.url = "github:y9san9/y9nika.nvim";
         y9nika-nvim.flake = false;
 
-        koda-nvim.url = "github:oskarnurm/koda.nvim";
-        koda-nvim.flake = false;
+        jellybeans-nvim.url = "github:WTFox/jellybeans.nvim";
+        jellybeans-nvim.flake = false;
     };
 
     outputs = inputs@{ nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
