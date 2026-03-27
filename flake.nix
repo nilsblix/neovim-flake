@@ -17,17 +17,8 @@
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-        cursor-light-nvim.url = "github:vpoltora/cursor-light.nvim";
-        cursor-light-nvim.flake = false;
-
-        xcode-nvim.url = "github:lunacookies/vim-colors-xcode";
-        xcode-nvim.flake = false;
-
         y9nika-nvim.url = "github:y9san9/y9nika.nvim";
         y9nika-nvim.flake = false;
-
-        jellybeans-nvim.url = "github:WTFox/jellybeans.nvim";
-        jellybeans-nvim.flake = false;
     };
 
     outputs = inputs@{ nixpkgs, flake-utils, neovim-nightly-overlay, ... }:

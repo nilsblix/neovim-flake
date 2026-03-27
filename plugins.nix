@@ -4,22 +4,18 @@
         version = src.lastModifiedDate;
     };
 in with pkgs.vimPlugins; [
-    vim-trailing-whitespace
-    vim-fugitive
-    tabular
-
     nvim-highlight-colors
+    mini-trailspace
+    mini-align
+    mini-hues
 
     vscode-nvim
     colibri-vim
     dracula-vim
-    (makeNeovimPlugin inputs.cursor-light-nvim "cursor-light")
     (makeNeovimPlugin inputs.y9nika-nvim "y9nika")
-    (makeNeovimPlugin inputs.jellybeans-nvim "jellybeans")
 
     oil-nvim
     fzf-lua
-    nvim-treesitter
     nvim-treesitter.withAllGrammars
     nvim-lspconfig
     blink-cmp

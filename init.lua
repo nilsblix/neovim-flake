@@ -20,8 +20,7 @@ vim.o.clipboard = vim.o.clipboard .. "unnamed"
 vim.o.guicursor = "n-v-i-c:block-Cursor"
 
 vim.keymap.set("n", "<leader>p", "<C-^>")
-vim.keymap.set("n", "<leader>ya", "mzggyG`z")
-vim.keymap.set("n", "<C-c>", ":cnext<CR>")
+vim.keymap.set("n", "<C-j>", ":cnext<CR>")
 vim.keymap.set("n", "<C-k>", ":cprev<CR>")
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
 vim.keymap.set("n", "<leader>i", ":Inspect<CR>")
@@ -64,26 +63,21 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     end,
 })
 
--- vim.cmd.colorscheme("colibri")
--- vim.api.nvim_set_hl(0, "StatusLine", { bg = "#291733" })
-
-vim.o.laststatus = 3
-vim.highlight.priorities.semantic_tokens = 80
-vim.cmd.colorscheme("y9nika")
+-- vim.highlight.priorities.semantic_tokens = 80
+-- vim.cmd.colorscheme("y9nika")
+vim.cmd.colorscheme("miniwinter")
 
 require('vim._core.ui2').enable({
-    enable = true, -- Whether to enable or disable the UI.
-    msg = {        -- Options related to the message module.
-        ---@type 'cmd'|'msg' Where to place regular messages, either in the
-        ---cmdline or in a separate ephemeral message window.
+    enable = true,
+    msg = {
         target = 'msg',
-        timeout = 4000, -- Time a message is visible in the message window.
+        timeout = 4000,
     },
 })
 
--- =============================================================================
---                           nvim-highlight-colors
--- =============================================================================
+require("mini.trailspace").setup()
+require("mini.align").setup()
+
 vim.api.nvim_create_autocmd("BufReadPre", {
     callback = function()
         require("nvim-highlight-colors").setup({
@@ -100,9 +94,6 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     end,
 })
 
--- =============================================================================
---                                   Blink
--- =============================================================================
 local blink = require("blink.cmp")
 blink.setup({
     keymap = { preset = "default" },
@@ -112,9 +103,6 @@ blink.setup({
     fuzzy = { implementation = "rust" },
 })
 
--- =============================================================================
---                                 Treesitter
--- =============================================================================
 require("nvim-treesitter").setup({
     install_dir = vim.fn.stdpath("data") .. "/site",
 })
@@ -124,11 +112,6 @@ vim.api.nvim_create_autocmd("FileType", {
         pcall(vim.treesitter.start, args.buf)
     end,
 })
-
--- =============================================================================
---                                    Lsp
--- =============================================================================
-require("fidget").setup({})
 
 local border_opt = "single"
 
@@ -208,9 +191,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
--- =============================================================================
---                                  Fzf-lua
--- =============================================================================
 require("fzf-lua").setup({
     defaults = { file_icons = false },
     keymap = {
@@ -224,9 +204,6 @@ vim.keymap.set("n", "<leader>sf", ":FzfLua files<CR>", { silent = true })
 vim.keymap.set("n", "<leader>sg", ":FzfLua live_grep<CR>", { silent = true })
 vim.keymap.set("n", "<leader>sd", ":FzfLua lsp_workspace_diagnostics<CR>", { silent = true })
 
--- =============================================================================
---                                    Oil
--- =============================================================================
 require("oil").setup({
     default_file_explorer = true,
     delete_to_trash = true,
