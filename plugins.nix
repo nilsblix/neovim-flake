@@ -11,8 +11,10 @@ in with pkgs.vimPlugins; [
 
     vscode-nvim
     colibri-vim
-    dracula-vim
+    seoul256-vim
+    ayu-vim
     (makeNeovimPlugin inputs.y9nika-nvim "y9nika")
+    (makeNeovimPlugin inputs.atlas-nvim "atlas")
 
     oil-nvim
     fzf-lua

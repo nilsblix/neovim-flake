@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "atlas-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1568430274,
+        "narHash": "sha256-QxDSe8qHZEgGs0or0llgJJ+44yLpGddye5X7UkwCPuw=",
+        "owner": "huyvohcmc",
+        "repo": "atlas.vim",
+        "rev": "f254465adbcae565d9cf8c987f5a797c1f9cf922",
+        "type": "github"
+      },
+      "original": {
+        "owner": "huyvohcmc",
+        "repo": "atlas.vim",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -48,11 +64,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774051512,
-        "narHash": "sha256-6IlLcSU4DJx6N+iIkorPa5/IGQ/sJLoVWQcqlsxWM98=",
+        "lastModified": 1774829101,
+        "narHash": "sha256-iOJHT8hP9IurF6gnvyEL6NVeMmDKvlCxwuKtPhXAt00=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "1db9d29916c326e55f2e7435a7692b5695090b81",
+        "rev": "a49f9d17bcaa684b81fc4322fbcbfc3ba501d40e",
         "type": "github"
       },
       "original": {
@@ -64,11 +80,11 @@
     "neovim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1774050147,
-        "narHash": "sha256-wgd3Jglqc1XSxWyXIHMs0eSmDM5ib+bHpxtlcYG7CT8=",
+        "lastModified": 1774827424,
+        "narHash": "sha256-Jd05KifFViRnFmSc8Wi58VQXDfaKvwmly1e9olXlefw=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "3c90cc1234ac66806b7da1e2fd9b0880c959521e",
+        "rev": "ed822a085db0b6f4c682707be2c35a7acdca57b2",
         "type": "github"
       },
       "original": {
@@ -95,6 +111,7 @@
     },
     "root": {
       "inputs": {
+        "atlas-nvim": "atlas-nvim",
         "flake-utils": "flake-utils",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
