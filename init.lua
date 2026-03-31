@@ -1,17 +1,22 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.o.number = true
 vim.o.incsearch = true
+
 vim.o.hlsearch = true
+vim.o.inccommand = "split"
 
 vim.o.title = true
+vim.o.wrap = false
+
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.scrolloff = 10
-vim.o.wrap = false
 
+vim.o.undofile = true
 vim.o.autoread = true
 vim.o.swapfile = false
 
@@ -65,7 +70,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- vim.highlight.priorities.semantic_tokens = 80
 -- vim.cmd.colorscheme("y9nika")
-vim.cmd.colorscheme("miniwinter")
+vim.cmd.colorscheme("sonokai")
+vim.o.termguicolors = false
 
 require('vim._core.ui2').enable({
     enable = true,

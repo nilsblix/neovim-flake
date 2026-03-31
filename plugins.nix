@@ -12,9 +12,8 @@ in with pkgs.vimPlugins; [
     vscode-nvim
     colibri-vim
     seoul256-vim
-    ayu-vim
+    sonokai
     (makeNeovimPlugin inputs.y9nika-nvim "y9nika")
-    (makeNeovimPlugin inputs.atlas-nvim "atlas")
 
     oil-nvim
     fzf-lua

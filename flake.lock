@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "atlas-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1568430274,
-        "narHash": "sha256-QxDSe8qHZEgGs0or0llgJJ+44yLpGddye5X7UkwCPuw=",
-        "owner": "huyvohcmc",
-        "repo": "atlas.vim",
-        "rev": "f254465adbcae565d9cf8c987f5a797c1f9cf922",
-        "type": "github"
-      },
-      "original": {
-        "owner": "huyvohcmc",
-        "repo": "atlas.vim",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -111,7 +95,6 @@
     },
     "root": {
       "inputs": {
-        "atlas-nvim": "atlas-nvim",
         "flake-utils": "flake-utils",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
