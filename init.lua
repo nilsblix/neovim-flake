@@ -46,16 +46,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd("BufRead", {
-    pattern = "*.nils",
-    callback = function()
-        vim.bo.filetype = "python"
-        vim.bo.tabstop = 2
-        vim.bo.softtabstop = 2
-        vim.bo.shiftwidth = 2
-    end,
-})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
@@ -68,10 +58,35 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     end,
 })
 
--- vim.highlight.priorities.semantic_tokens = 80
--- vim.cmd.colorscheme("y9nika")
-vim.cmd.colorscheme("sonokai")
-vim.o.termguicolors = false
+-- perform the cursor clear.
+vim.cmd.colorscheme("default")
+
+-- Quite accurate light gitlab...
+-- vim.opt.background = "light"
+-- require("y9nika.core").apply {
+--     background = "#FFFFFF", -- "#0e1415",
+--     foreground = "#3A383F", -- "#dddddd",
+--     primary    = "#445488", -- "#71ade7",
+--     secondary  = "#DD1144", -- "#95cb82",
+--     muted      = "#3A383F", -- "#aaaaaa",
+--     marker     = "#999988", -- "#dfdf8e",
+-- }
+-- vim.api.nvim_set_hl(0, "Keyword", { bold = true })
+
+-- vim.opt.background = "dark"
+-- require("y9nika.core").apply({
+--     background = "#222222", -- "#0e1415",
+--     foreground = "#dddddd", -- "#dddddd",
+--     primary    = "#B1A0F8", -- "#71ade7",
+--     secondary  = "#FF8080", -- "#95cb82",
+--     muted      = "#FFFFFF", -- "#aaaaaa",
+--     marker     = "#AAAA77", -- "#dfdf8e",
+-- })
+-- vim.api.nvim_set_hl(0, "Keyword", { fg = "#FFFFFF", bold = true })
+-- vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#6688FF", bold = true })
+-- vim.cmd("hi! link @keyword.return Keyword")
+
+vim.cmd.colorscheme("vscode")
 
 require('vim._core.ui2').enable({
     enable = true,
@@ -79,6 +94,20 @@ require('vim._core.ui2').enable({
         target = 'msg',
         timeout = 4000,
     },
+})
+
+vim.api.nvim_create_autocmd('LspProgress',{
+    callback = function(ev)
+        local value = ev.data.params.value
+        vim.api.nvim_echo({ { value.message or 'done' } }, false, {
+            id = 'lsp.' .. ev.data.client_id,
+            kind = 'progress',
+            source = 'vim.lsp',
+            title = value.title,
+            status = value.kind ~= 'end' and 'running' or 'success',
+            percent = value.percentage,
+        })
+    end,
 })
 
 require("mini.trailspace").setup()
@@ -140,42 +169,36 @@ local servers = {
     "ocamllsp",
 }
 
-for _, server in ipairs(servers) do
-    if (server == "nixd") then
-        vim.lsp.config[server] = {
-            capabilities = capabilities,
-            cmd = { "nixd" },
-            settings = {
-                nixd = {
-                    nixpkgs = {
-                        expr = "import <nixpkgs> { }",
-                    },
-                },
+vim.lsp.config["nixd"] = {
+    cmd = { "nixd" },
+    settings = {
+        nixd = {
+            nixpkgs = {
+                expr = "import <nixpkgs> { }",
             },
-        }
-    elseif (server == "lua_ls") then
-        vim.lsp.config[server] = {
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                },
-            },
-        }
-    else
-        vim.lsp.config[server] = {
-            capabilities = capabilities,
-        }
-    end
+        },
+    },
+}
 
+vim.lsp.config["lua_ls"] = {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" },
+            },
+        },
+    },
+}
+
+for _, server in ipairs(servers) do
+    vim.lsp.config[server].capabilities = capabilities
     vim.lsp.enable(server)
 end
 
+
 vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(e)
-        local opts = { buffer = e.buf }
+    callback = function(args)
+        local opts = { buffer = args.buf }
         vim.keymap.set("n", "gd", function()
             vim.lsp.buf.definition()
         end, opts)
@@ -194,6 +217,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>E", function()
             vim.diagnostic.open_float()
         end, opts)
+
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        client.server_capabilities.semanticTokensProvider = nil
     end,
 })
 
