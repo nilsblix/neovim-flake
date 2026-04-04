@@ -60,33 +60,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- perform the cursor clear.
 vim.cmd.colorscheme("default")
-
--- Quite accurate light gitlab...
--- vim.opt.background = "light"
--- require("y9nika.core").apply {
---     background = "#FFFFFF", -- "#0e1415",
---     foreground = "#3A383F", -- "#dddddd",
---     primary    = "#445488", -- "#71ade7",
---     secondary  = "#DD1144", -- "#95cb82",
---     muted      = "#3A383F", -- "#aaaaaa",
---     marker     = "#999988", -- "#dfdf8e",
--- }
--- vim.api.nvim_set_hl(0, "Keyword", { bold = true })
-
--- vim.opt.background = "dark"
--- require("y9nika.core").apply({
---     background = "#222222", -- "#0e1415",
---     foreground = "#dddddd", -- "#dddddd",
---     primary    = "#B1A0F8", -- "#71ade7",
---     secondary  = "#FF8080", -- "#95cb82",
---     muted      = "#FFFFFF", -- "#aaaaaa",
---     marker     = "#AAAA77", -- "#dfdf8e",
--- })
--- vim.api.nvim_set_hl(0, "Keyword", { fg = "#FFFFFF", bold = true })
--- vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#6688FF", bold = true })
--- vim.cmd("hi! link @keyword.return Keyword")
-
 vim.cmd.colorscheme("vscode")
+vim.cmd("hi! @type.builtin gui=bold")
 
 require('vim._core.ui2').enable({
     enable = true,

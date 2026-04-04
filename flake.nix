@@ -16,9 +16,6 @@
 
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-
-        y9nika-nvim.url = "github:y9san9/y9nika.nvim";
-        y9nika-nvim.flake = false;
     };
 
     outputs = inputs@{ nixpkgs, flake-utils, neovim-nightly-overlay, ... }:

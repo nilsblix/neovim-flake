@@ -97,8 +97,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs",
-        "y9nika-nvim": "y9nika-nvim"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
@@ -113,22 +112,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "y9nika-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1773496040,
-        "narHash": "sha256-L5CjZg3mOxhy2wC491RIN9XgnO6k+8LYlNIIzg26GPc=",
-        "owner": "y9san9",
-        "repo": "y9nika.nvim",
-        "rev": "f170bbb31aea7aedceb4c9ec101ca639585afcb2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "y9san9",
-        "repo": "y9nika.nvim",
         "type": "github"
       }
     }
