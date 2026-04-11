@@ -14,7 +14,7 @@ in with pkgs.vimPlugins; [
 
     vscode-nvim
     colibri-vim
-    seoul256-vim
+    embark-vim
 
     oil-nvim
     fzf-lua

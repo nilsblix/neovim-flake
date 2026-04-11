@@ -1,34 +1,32 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 vim.o.number = true
-vim.o.incsearch = true
-
-vim.o.hlsearch = true
-vim.o.inccommand = "split"
-
 vim.o.title = true
 vim.o.wrap = false
-
+vim.opt.showtabline = 2
 vim.o.expandtab = true
 vim.o.tabstop = 4
-vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.scrolloff = 10
-
 vim.o.undofile = true
 vim.o.autoread = true
 vim.o.swapfile = false
-
 vim.o.mouse = "a"
 vim.o.clipboard = vim.o.clipboard .. "unnamed"
 vim.o.guicursor = "n-v-i-c:block-Cursor"
 
-vim.keymap.set("n", "<leader>p", "<C-^>")
-vim.keymap.set("n", "<C-j>", ":cnext<CR>")
-vim.keymap.set("n", "<C-k>", ":cprev<CR>")
-vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
-vim.keymap.set("n", "<leader>i", ":Inspect<CR>")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+local map = vim.keymap.set
+
+map("n", "<leader>p", "<C-^>")
+map("n", "<C-j>", ":cnext<CR>")
+map("n", "<C-k>", ":cprev<CR>")
+map("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
+map("n", "<leader>i", ":Inspect<CR>")
+
+for i = 1, 8 do
+	map({ "n", "t" }, "<leader>" .. i, ":tabnext " .. i .. "<CR>")
+end
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "ocaml", "ocamlinterface", "ocamllex", "ocamlyacc" },
@@ -58,17 +56,12 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     end,
 })
 
--- perform the cursor clear.
-vim.cmd.colorscheme("default")
-vim.cmd.colorscheme("vscode")
-vim.cmd("hi! @type.builtin gui=bold")
+vim.cmd.colorscheme("embark")
+vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
 
 require('vim._core.ui2').enable({
     enable = true,
-    msg = {
-        target = 'msg',
-        timeout = 4000,
-    },
+    msg = { target = 'msg', timeout = 4000 },
 })
 
 vim.api.nvim_create_autocmd('LspProgress',{
@@ -174,27 +167,27 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local opts = { buffer = args.buf }
-        vim.keymap.set("n", "gd", function()
+        map("n", "gd", function()
             vim.lsp.buf.definition()
         end, opts)
-        vim.keymap.set("n", "gt", function()
+        map("n", "gt", function()
             vim.lsp.buf.type_definition()
         end, opts)
-        vim.keymap.set("n", "K", function()
+        map("n", "K", function()
             vim.lsp.buf.hover({ border = border_opt })
         end, opts)
-        vim.keymap.set("i", "<C-h>", function()
+        map("i", "<C-h>", function()
             vim.lsp.buf.signature_help()
         end, opts)
-        vim.keymap.set("n", "<leader>rn", function()
+        map("n", "<leader>rn", function()
             vim.lsp.buf.rename()
         end, opts)
-        vim.keymap.set("n", "<leader>E", function()
+        map("n", "<leader>E", function()
             vim.diagnostic.open_float()
         end, opts)
 
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        client.server_capabilities.semanticTokensProvider = nil
+        -- local client = vim.lsp.get_client_by_id(args.data.client_id)
+        -- client.server_capabilities.semanticTokensProvider = nil
     end,
 })
 
@@ -207,9 +200,9 @@ require("fzf-lua").setup({
     },
 })
 
-vim.keymap.set("n", "<leader>sf", ":FzfLua files<CR>", { silent = true })
-vim.keymap.set("n", "<leader>sg", ":FzfLua live_grep<CR>", { silent = true })
-vim.keymap.set("n", "<leader>sd", ":FzfLua lsp_workspace_diagnostics<CR>", { silent = true })
+map("n", "<leader>sf", ":FzfLua files<CR>", { silent = true })
+map("n", "<leader>sg", ":FzfLua live_grep<CR>", { silent = true })
+map("n", "<leader>sd", ":FzfLua lsp_workspace_diagnostics<CR>", { silent = true })
 
 require("oil").setup({
     default_file_explorer = true,
@@ -226,4 +219,4 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.keymap.set("n", "<leader>n", ":Oil<CR>", { silent = true })
+map("n", "<leader>n", ":Oil<CR>", { silent = true })
