@@ -16,7 +16,7 @@
 
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    };
+   };
 
     outputs = inputs@{ nixpkgs, flake-utils, neovim-nightly-overlay, ... }:
         let
@@ -40,7 +40,7 @@
                         neovim-flake-maximal = makeConfiguredNeovim {
                             pkgs = final;
                             baseNeovim = neovim-nightly-overlay.packages.${system}.default;
-                            pluginsPath = ./plugins.nix;
+                            pluginsPath = ./packages.nix;
                             configPath = ./init.lua;
                         };
                         neovim-flake = final.neovim-flake-maximal;
@@ -57,7 +57,7 @@
                 maximalNeovim = makeConfiguredNeovim {
                     inherit pkgs;
                     baseNeovim = nightlyNeovim;
-                    pluginsPath = ./plugins.nix;
+                    pluginsPath = ./packages.nix;
                     configPath = ./init.lua;
                 };
             in {
