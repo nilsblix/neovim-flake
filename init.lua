@@ -132,9 +132,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     end,
 })
 
-vim.cmd.colorscheme("embark")
-apply_embark_blink_highlights()
-vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+-- vim.cmd.colorscheme("embark")
+-- apply_embark_blink_highlights()
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+vim.cmd.colorscheme("vague")
 
 require('vim._core.ui2').enable({
     enable = true,

@@ -1,11 +1,11 @@
 { inputs, pkgs }: let
-    # makeNeovimPlugin = src: pname: pkgs.vimUtils.buildVimPlugin {
-    #     inherit pname src;
-    #     version =
-    #         if builtins.isAttrs src && src ? lastModifiedDate
-    #         then src.lastModifiedDate
-    #         else "0";
-    # };
+    makeNeovimPlugin = src: pname: pkgs.vimUtils.buildVimPlugin {
+        inherit pname src;
+        version =
+            if builtins.isAttrs src && src ? lastModifiedDate
+            then src.lastModifiedDate
+            else "0";
+    };
 in with pkgs.vimPlugins; [
     nvim-highlight-colors
     mini-trailspace
@@ -15,6 +15,7 @@ in with pkgs.vimPlugins; [
     vscode-nvim
     colibri-vim
     embark-vim
+    vague-nvim
 
     oil-nvim
     fzf-lua
