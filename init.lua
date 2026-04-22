@@ -50,91 +50,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-local function apply_embark_blink_highlights()
-    local palette = {
-        space2 = "#2F2A47",
-        space3 = "#3E3859",
-        astral0 = "#8A889D",
-        purple = "#d4bfff",
-        dark_yellow = "#F2B482",
-    }
-
-    local set_hl = vim.api.nvim_set_hl
-
-    set_hl(0, "PmenuKind", { fg = palette.purple, bg = palette.space2 })
-    set_hl(0, "PmenuExtra", { fg = palette.astral0, bg = palette.space2 })
-    set_hl(0, "LspSignatureActiveParameter", {
-        fg = palette.dark_yellow,
-        bg = palette.space2,
-        bold = true,
-        underline = true,
-    })
-
-    local links = {
-        BlinkCmpLabelDeprecated = "PmenuExtra",
-        BlinkCmpLabelDetail = "PmenuExtra",
-        BlinkCmpLabelDescription = "PmenuExtra",
-        BlinkCmpSource = "PmenuExtra",
-        BlinkCmpKind = "PmenuKind",
-        BlinkCmpKindText = "BlinkCmpKind",
-        BlinkCmpKindMethod = "BlinkCmpKind",
-        BlinkCmpKindFunction = "BlinkCmpKind",
-        BlinkCmpKindConstructor = "BlinkCmpKind",
-        BlinkCmpKindField = "BlinkCmpKind",
-        BlinkCmpKindVariable = "BlinkCmpKind",
-        BlinkCmpKindClass = "BlinkCmpKind",
-        BlinkCmpKindInterface = "BlinkCmpKind",
-        BlinkCmpKindModule = "BlinkCmpKind",
-        BlinkCmpKindProperty = "BlinkCmpKind",
-        BlinkCmpKindUnit = "BlinkCmpKind",
-        BlinkCmpKindValue = "BlinkCmpKind",
-        BlinkCmpKindEnum = "BlinkCmpKind",
-        BlinkCmpKindKeyword = "BlinkCmpKind",
-        BlinkCmpKindSnippet = "BlinkCmpKind",
-        BlinkCmpKindColor = "BlinkCmpKind",
-        BlinkCmpKindFile = "BlinkCmpKind",
-        BlinkCmpKindReference = "BlinkCmpKind",
-        BlinkCmpKindFolder = "BlinkCmpKind",
-        BlinkCmpKindEnumMember = "BlinkCmpKind",
-        BlinkCmpKindConstant = "BlinkCmpKind",
-        BlinkCmpKindStruct = "BlinkCmpKind",
-        BlinkCmpKindEvent = "BlinkCmpKind",
-        BlinkCmpKindOperator = "BlinkCmpKind",
-        BlinkCmpKindTypeParameter = "BlinkCmpKind",
-        BlinkCmpScrollBarThumb = "PmenuThumb",
-        BlinkCmpScrollBarGutter = "PmenuSbar",
-        BlinkCmpGhostText = "NonText",
-        BlinkCmpMenu = "Pmenu",
-        BlinkCmpMenuSelection = "PmenuSel",
-        BlinkCmpDoc = "NormalFloat",
-        BlinkCmpDocCursorLine = "Visual",
-        BlinkCmpSignatureHelp = "NormalFloat",
-        BlinkCmpSignatureHelpActiveParameter = "LspSignatureActiveParameter",
-    }
-
-    for group, target in pairs(links) do
-        set_hl(0, group, { link = target })
-    end
-
-    set_hl(0, "BlinkCmpMenuBorder", { fg = palette.space3, bg = palette.space2 })
-    set_hl(0, "BlinkCmpDocBorder", { fg = palette.space3, bg = palette.space2 })
-    set_hl(0, "BlinkCmpDocSeparator", { fg = palette.space3, bg = palette.space2 })
-    set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = palette.space3, bg = palette.space2 })
-end
-
 vim.api.nvim_create_autocmd("ColorScheme", {
-    callback = function(args)
+    callback = function(_)
         vim.cmd("hi! Cursor guibg=none")
-
-        if args.match == "embark" then
-            apply_embark_blink_highlights()
-        end
     end,
 })
 
--- vim.cmd.colorscheme("embark")
--- apply_embark_blink_highlights()
--- vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+require("vague").setup({ italic = false })
 vim.cmd.colorscheme("vague")
 
 require('vim._core.ui2').enable({
@@ -202,21 +124,13 @@ vim.diagnostic.config({
     signs = false,
 })
 
-local capabilities = blink.get_lsp_capabilities()
+local blink_capabilities = blink.get_lsp_capabilities()
 
-local servers = {
-    "lua_ls",
-    "rust_analyzer",
-    "zls",
-    "ts_ls",
-    "nixd",
-    "basedpyright",
-    "gopls",
-    "ocamllsp",
-}
+vim.lsp.config("*", {
+    capabilities = blink_capabilities,
+})
 
-vim.lsp.config["nixd"] = {
-    cmd = { "nixd" },
+vim.lsp.config("nixd", {
     settings = {
         nixd = {
             nixpkgs = {
@@ -224,9 +138,9 @@ vim.lsp.config["nixd"] = {
             },
         },
     },
-}
+})
 
-vim.lsp.config["lua_ls"] = {
+vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
             diagnostics = {
@@ -234,13 +148,12 @@ vim.lsp.config["lua_ls"] = {
             },
         },
     },
-}
+})
 
-for _, server in ipairs(servers) do
-    vim.lsp.config[server].capabilities = capabilities
-    vim.lsp.enable(server)
-end
-
+vim.lsp.enable({
+    "lua_ls", "rust_analyzer", "zls", "ts_ls",
+    "nixd", "basedpyright", "gopls", "ocamllsp",
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
